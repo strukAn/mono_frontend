@@ -1,8 +1,7 @@
+import { useState } from "react";
 import EmployeeRow from "./EmployeeRow";
 
-function EmployeeTable() {
-    const employees = JSON.parse(localStorage.getItem("employees")) ?? [];
-
+function EmployeeTable({ employees, deleteEmployee, editingId, setEditingId }) {
     const openAddForm = () => {
         const form = document.getElementById("form");
         const fName = document.getElementById("firstname");
@@ -36,7 +35,11 @@ function EmployeeTable() {
                     {employees.map(employee => (
                         <EmployeeRow 
                             key={employee.id}
+                            employees={employees}
                             employee={employee}
+                            deleteEmployee={deleteEmployee}
+                            editingId={editingId}
+                            setEditingId={setEditingId}
                         />
                     ))}
                 </tbody>
