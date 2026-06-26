@@ -1,6 +1,7 @@
-import { useState } from "react"
+import { useState } from 'react'
 import EmployeeTable from './components/EmployeeTable'
 import EmployeeForm from './components/EmployeeForm'
+import axios from 'axios'
 
 function App() {
     const [employees, setEmployees] = useState(

@@ -6,7 +6,7 @@ function EmployeeRow({ employees, employee, deleteEmployee, editingId, setEditin
         const lName = document.getElementById("lastname");
         const store = document.getElementById("store");
         const started = document.getElementById("started");
-        const employee = employees.find(el => Number(id) === Number(id));
+        const employee = employees.find(el => Number(el.id) === Number(id));
 
         fName.value = employee.firstName;
         lName.value = employee.lastName;

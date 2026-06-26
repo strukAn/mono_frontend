@@ -1,4 +1,10 @@
-import { unstable_batchedUpdates } from "react-dom";
+import { unstable_batchedUpdates } from 'react-dom';
+
+function SubmitAction({ editingId, editEmployee, addEmployee }) {
+    return editingId ?
+        <input type="button" value="Submit" onClick={editEmployee}/>
+        : <input type="button" value="Submit" onClick={addEmployee}/>
+}
 
 function EmployeeForm({ editEmployee, addEmployee, editingId, setEditingId }) {
     const cancelForm = () => {
@@ -18,10 +24,7 @@ function EmployeeForm({ editEmployee, addEmployee, editingId, setEditingId }) {
         form.classList.add("hidden");
     }
 
-    const submitAction = () => {
-        const submit = document.getElementById("submit");
-        editingId !== 0 ? editEmployee() : addEmployee();
-    }
+    
 
     return (
         <>
@@ -40,7 +43,11 @@ function EmployeeForm({ editEmployee, addEmployee, editingId, setEditingId }) {
                 <input type="date" id="started" name="started" /><br/><br/>
 
                 <span>
-                    <input type="button" value={editingId ? "Submit" : "Update"} onClick={submitAction} />
+                    <SubmitAction
+                        editingId={editingId}
+                        editEmployee={editEmployee}
+                        addEmployee={addEmployee}
+                    />
                     <input type="button" value="Cancel" id="submit" onClick={cancelForm}/>
                 </span>
             </form>
